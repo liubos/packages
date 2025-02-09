@@ -19,6 +19,8 @@ jobs:
 
       - name: System info
         run: |
+          lscpu | grep -E '^Architecture|^CPU\(s\):|^Model name'
+          uname -sr
           lsb_release -a
           free -h
 
@@ -28,7 +30,7 @@ jobs:
           fetch-depth: 1
 
       - name: Build caches
-        uses: vernlau/actions-sdk@main
+        uses: apoiston/actions@main
         with:
           build_config: config/config.buildinfo
 
@@ -48,3 +50,12 @@ jobs:
           path: |
             ./openwrt/openwrt-caches.tar.zst
             ./openwrt/sha256sum.txt
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 2            
+          

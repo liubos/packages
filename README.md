@@ -10,11 +10,11 @@
 
 ## 其它信息
 
-1. **插件**: [MihomoTProxy](https://github.com/morytyann/OpenWrt-mihomo)
+1. **插件**: [Nikki](https://github.com/nikkinikki-org/OpenWrt-nikki)
 
 ## 下载地址
 
-固件下载链接: [GitHub Releases](https://github.com/vernlau/openwrt/releases)
+固件下载链接: [GitHub Releases](https://github.com/apoiston/openwrt-archive/releases)
 
 ## 特别感谢
 
