@@ -1,4 +1,4 @@
-name: Build caches
+name: Build Packages
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   build:
-    name: Build caches
+    name: Build Packages
     runs-on: ubuntu-latest
 
     steps:
