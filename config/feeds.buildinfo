@@ -1,3 +1,3 @@
-# 2025-02-17 03:14:31
-src-git packages https://git.openwrt.org/feed/packages.git^c3a33e10a5cb4fb01c35739f58281146015e7351
-src-git luci https://git.openwrt.org/project/luci.git^375c7010018ec33b611d1b12f70ea9d2e12fa756
+# 2025-02-18 07:12:05
+src-git packages https://git.openwrt.org/feed/packages.git^162b1e693e68b44500d301e3db0ce2dc19db7336
+src-git luci https://git.openwrt.org/project/luci.git^6b33775ff0b61a22bfcdd4baf4deae0474ca513e
