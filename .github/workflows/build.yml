@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  actions: write
 
 jobs:
   build:
@@ -30,16 +31,31 @@ jobs:
           fetch-depth: 1
 
       - name: Build caches
-        uses: apoiston/actions@main
+        uses: apoiston/actions@caches
         with:
-          build_config: config/config.buildinfo
+          config_buildinfo: config/config.buildinfo
 
+      - name: Show total
+        working-directory: ./openwrt
+        run: |
+          du -ch --max-depth=1 \
+            build_dir/host \
+            staging_dir/host \
+            build_dir/toolchain-* \
+            staging_dir/toolchain-* \
+            build_dir/target-*/linux-* \
+            staging_dir/target-* | tail -n 1
+      
       - name: Compress caches
         working-directory: ./openwrt
         run: |
           tar -I "zstd -19 -T$(nproc)" -cf openwrt-caches.tar.zst \
-              staging_dir/toolchain-* \
+              build_dir/host \
+              staging_dir/host \
               build_dir/toolchain-* \
+              staging_dir/toolchain-* \
+              build_dir/target-*/linux-* \
+              staging_dir/target-* \
               dl  
           sha256sum openwrt-caches.tar.zst > sha256sum.txt
 
